@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>[[${examHall.name}]]</title>
+
+    <link data-th-href="@{/css/bootstrap.min.css}" rel="stylesheet">
+
+    <script data-th-inline="javascript">
+
+        function ExamQuestion() {
+
+            this.source = null;
+
+            this.start = function() {
+
+                var questionsTable = document.getElementById("questions");
+                var sourceUrl = [[@{|/examHall/${examHall.id}/questionStream|}]];
+
+                this.source = new EventSource(sourceUrl);
+
+                this.source.addEventListener("message", function(event) {
+                    var question = JSON.parse(event.data);
+
+                    var row = questionsTable.getElementsByTagName("tbody")[0].insertRow(-1);
+                    var cell = row.insertCell(0);
+
+                    cell.innerHTML = setQuestion(question);
+                });
+
+                this.source.onerror = function() {
+                    this.close();
+                };
+
+            };
+
+            this.stop = function() {
+                this.source.close();
+            }
+
+        }
+
+        function setQuestion(question) {
+            var id = question.id;
+            var html = (id + 1) + ".<br />" + question.name + "<br />";
+
+            if (question.type == 0) {
+                question.items.forEach(function(item, index) {
+                     // html += "<br />" + "<input type='radio' id='radio" + id + "_" + index + "' name='radio" + id + "' value='" + index + "'>";
+                     // html += "<label for='radio" + id + "_" + index + "'>&nbsp&nbsp" + item.name + "</label>";
+
+                     html += "<br /><label><input type='radio' name='radio" + id + "' value='" + index + "'>&nbsp&nbsp" + item.name + "</label>";
+                });
+            } else if (question.type == 1) {
+                question.items.forEach(function(item, index) {
+
+                });
+            }
+
+            return html;
+        }
+
+        var examQuestion = new ExamQuestion();
+
+        window.onload = function() {
+            examQuestion.start();
+        };
+
+        window.onbeforeunload = function() {
+            examQuestion.stop();
+        };
+
+    </script>
+
+</head>
+<body>
+
+<div class="container">
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">[[${examHall.name}]]</th>
+                <th scope="col">題數: [[${examHall.number}]]</th>
+                <th scope="col">時間: [[${examHall.time}]]</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover" id="questions">
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>
