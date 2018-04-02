@@ -26,7 +26,8 @@ public class ExamHallService {
         return Flux.just(
                 new ExamHall("3", "N3", 20, 30),
                 new ExamHall("1", "N1", 20, 10),
-                new ExamHall("2", "N2", 20, 20));
+                new ExamHall("2", "N2", 20, 20),
+                new ExamHall("4", "N24", 30, 80));
     }
 
 //    public List<ExamHall> findAllList() {
