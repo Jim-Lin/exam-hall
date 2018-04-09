@@ -5,7 +5,7 @@ services:
     container_name: examhall-core
     build:
       context: ./core
-    image: idv.jimlin/examhall-core:0.0.1
+    image: idv.jimlin/examhall-core:0.0.2
     expose:
       - "9000"
     volumes:
@@ -17,7 +17,7 @@ services:
     container_name: examhall-ui
     build:
       context: ./ui
-    image: idv.jimlin/examhall-ui:0.0.1
+    image: idv.jimlin/examhall-ui:0.0.2
     expose:
       - "5000"
     networks:
