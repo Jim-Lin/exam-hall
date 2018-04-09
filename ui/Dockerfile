@@ -1,6 +1,7 @@
 FROM mhart/alpine-node AS build
 WORKDIR /app
 COPY . .
+RUN npm install
 RUN npm run build
 
 FROM mhart/alpine-node
