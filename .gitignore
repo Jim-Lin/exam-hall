@@ -17,14 +17,6 @@
 *.iml
 *.ipr
 
-### NetBeans ###
-nbproject/private/
-build/
-nbbuild/
-dist/
-nbdist/
-.nb-gradle/
-
 ### react ###
 .DS_STORE
 node_modules
@@ -50,3 +42,5 @@ chrome-user-data
 .vscode
 *.swp
 *.swo
+
+ui/dist/bundle.js
