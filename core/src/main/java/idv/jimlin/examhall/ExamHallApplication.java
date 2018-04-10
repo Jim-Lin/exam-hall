@@ -46,9 +46,9 @@ public class ExamHallApplication {
 	CorsWebFilter corsFilter() {
 		CorsConfiguration config = new CorsConfiguration();
 		config.setAllowCredentials(true);
-		config.addAllowedOrigin("http://localhost:8080");
-		config.addAllowedHeader("*");
-		config.addAllowedMethod("*");
+		config.addAllowedOrigin(CorsConfiguration.ALL);
+		config.addAllowedHeader(CorsConfiguration.ALL);
+		config.addAllowedMethod(CorsConfiguration.ALL);
 
 		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource(new PathPatternParser());
 		source.registerCorsConfiguration("/api/**", config);
