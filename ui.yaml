@@ -1,0 +1,30 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: ui
+spec:
+  selector:
+    app: examhall
+    tier: ui
+  ports:
+  - protocol: TCP
+    port: 5000
+    targetPort: 5000
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: ui
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: examhall
+        tier: ui
+    spec:
+      containers:
+      - name: core
+        image: "gcr.io/exam-hall-jimlin/ui:0.0.6"
+        ports:
+        - containerPort: 5000

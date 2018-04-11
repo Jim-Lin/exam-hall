@@ -1,0 +1,30 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: core
+spec:
+  selector:
+    app: examhall
+    tier: core
+  ports:
+  - protocol: TCP
+    port: 9000
+    targetPort: 9000
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: core
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: examhall
+        tier: core
+    spec:
+      containers:
+      - name: core
+        image: "gcr.io/exam-hall-jimlin/core:0.0.6"
+        ports:
+        - containerPort: 9000
