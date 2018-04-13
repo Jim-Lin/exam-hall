@@ -1,6 +1,12 @@
+## Structure
+![structure](structure.png?raw=true)
+
 ## GCP
 requirements
 - Cloud SDK
+
+### Google Container Registry (GCR)
+Github trigger build image in GCR
 
 ### GKE
 #### cluster
@@ -22,6 +28,11 @@ kubectl create configmap nginx-config --from-file=default.conf
 kubectl create -f nginx.yaml
 ```
 
+#### check pods status
+```
+kubectl get pods -l app=examhall -o wide
+```
+
 #### clear
 ```
 kubectl delete configmap nginx-config
@@ -32,6 +43,9 @@ gcloud container clusters delete examhall
 ```
 
 ## local
+requirements
+- Docker
+
 ### Docker Compose
 #### build
 ```
