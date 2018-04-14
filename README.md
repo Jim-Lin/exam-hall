@@ -1,5 +1,5 @@
-## Structure
-![structure](structure.png?raw=true)
+## Architecture
+![architecture](architecture.png?raw=true)
 
 ## GCP
 requirements
@@ -33,7 +33,7 @@ kubectl create -f nginx.yaml
 kubectl get pods -l app=examhall -o wide
 ```
 
-#### clear
+#### cleanup
 ```
 kubectl delete configmap nginx-config
 kubectl delete --all svc
@@ -57,7 +57,7 @@ docker-compose build
 docker-compose up -d
 ```
 
-#### clear
+#### cleanup
 ```
 docker-compose rm -s
 ```
