@@ -3,8 +3,8 @@ steps:
   args: ['clone', 'https://github.com/Jim-Lin/exam-hall.git']
 
 - name: gcr.io/cloud-builders/docker
-  args: ['build', '-t', 'gcr.io/exam-hall-jimlin/ui:$TAG_NAME', '.']
-  dir: 'ui'
+  args: ['build', '-t', 'gcr.io/exam-hall-jimlin/$_TARGET:$TAG_NAME', '.']
+  dir: '$_TARGET'
 
 # Generate a kubeconfig file for the given GKE cluster.
 - name: 'gcr.io/cloud-builders/kubectl'
@@ -35,9 +35,9 @@ steps:
   args:
     - '-c'
     - |
-      kubectl apply -f ui.yaml
+      kubectl apply -f $_TARGET.yaml
   volumes:
     - name: 'kube'
       path: /kube
 
-images: ['gcr.io/exam-hall-jimlin/ui:$TAG_NAME']
+images: ['gcr.io/exam-hall-jimlin/$_TARGET:$TAG_NAME']
