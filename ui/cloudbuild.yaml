@@ -35,7 +35,7 @@ steps:
   args:
     - '-c'
     - |
-      kubectl apply -l tier=ui -f kubernetes
+      kubectl apply -f ui.yaml
   volumes:
     - name: 'kube'
       path: /kube
