@@ -1,4 +1,4 @@
-console.log('My Minimal React Webpack Babel Setup');
+console.log('tag-0.0.7');
 
 import React from 'react';
 import ReactDOM from 'react-dom';
