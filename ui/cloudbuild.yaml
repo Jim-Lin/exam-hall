@@ -8,10 +8,10 @@ steps:
 
 # Generate a kubeconfig file for the given GKE cluster.
 - name: 'gcr.io/cloud-builders/kubectl'
-  # env:
-  #   - 'CLOUDSDK_COMPUTE_ZONE=${_CLOUDSDK_COMPUTE_ZONE}'
-  #   - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLOUDSDK_CONTAINER_CLUSTER}'
-  #   - 'KUBECONFIG=/kube/config'
+  env:
+    - 'CLOUDSDK_COMPUTE_ZONE=asia-east1-b'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=examhall'
+    - 'KUBECONFIG=/kube/config'
   entrypoint: 'sh'
   args:
     - '-c'
