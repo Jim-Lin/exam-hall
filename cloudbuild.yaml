@@ -1,6 +1,6 @@
 steps:
 - name: gcr.io/cloud-builders/git
-  args: ['clone', 'https://github.com/Jim-Lin/exam-hall.git']
+  args: ['clone', 'https://github.com/Jim-Lin/exam-hall.git', '--branch', '$TAG_NAME', '--single-branch']
 
 - name: gcr.io/cloud-builders/docker
   args: ['build', '-t', 'gcr.io/exam-hall-jimlin/$_TARGET:$TAG_NAME', '.']
