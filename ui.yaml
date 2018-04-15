@@ -25,6 +25,6 @@ spec:
     spec:
       containers:
       - name: core
-        image: "gcr.io/exam-hall-jimlin/ui:0.0.10"
+        image: "gcr.io/exam-hall-jimlin/ui:0.0.12"
         ports:
         - containerPort: 5000
