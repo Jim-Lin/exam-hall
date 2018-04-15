@@ -1,4 +1,4 @@
-console.log('tag-0.0.7');
+console.log('tag-auto-build-test');
 
 import React from 'react';
 import ReactDOM from 'react-dom';
