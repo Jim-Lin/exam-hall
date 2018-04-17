@@ -39,7 +39,7 @@ public class ExamHallApplication {
 		return nest(path("/api/examHalls"),
 				route(GET("/"), examHallApiHandler::listExamHalls)
 						.andNest(path("/{id}"),
-								route(GET("/questionStream"), examHallApiHandler::listQuestions)));
+								route(GET("/questionStream/{number}"), examHallApiHandler::listQuestions)));
 	}
 
 	@Bean
