@@ -25,6 +25,10 @@ export default class CountDownTimer extends React.Component {
     });
   }
 
+  // componentDidMount() {
+  //   this.interval = setInterval(() => this.tick(), 1000);
+  // }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.start) {
       this.interval = setInterval(() => this.tick(), 1000);
