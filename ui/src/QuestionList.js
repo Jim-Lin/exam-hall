@@ -15,18 +15,18 @@ export default class QuestionList extends React.Component {
 
     this.source = new EventSource(sourceUrl);
     this.source.addEventListener("message", function(event) {
-      let question = JSON.parse(event.data);
+      const question = JSON.parse(event.data);
       this.setState({ questions: this.state.questions.concat(question) });
-    }.bind(this));
+
+      if (!this.props.start) {
+        this.props.onStart();
+      }
+    }.bind(this)); // https://github.com/facebook/react/issues/9498#issuecomment-313816103
 
     this.source.onerror = function() {
       this.close();
     };
   }
-
-  // componentDidUmnount() {
-  //   this.source.removeAllListeners();
-  // }
 
   render() {
     const questions = this.state.questions;
