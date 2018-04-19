@@ -46,7 +46,7 @@ gcloud projects add-iam-policy-binding $PROJECT \
 
 1. push to GitHub with tag
 1. trigger build image in GCR
-  - run cloudbuild.yaml to build steps
+    - run cloudbuild.yaml to build steps
 1. apply Kubernetes configuration files
 
 ### cleanup

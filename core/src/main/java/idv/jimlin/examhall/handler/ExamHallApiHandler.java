@@ -28,6 +28,7 @@ public class ExamHallApiHandler {
 
     public Mono<ServerResponse> listQuestions(ServerRequest request) {
         String id = request.pathVariable("id");
+        String number = request.pathVariable("number");
 
         return ServerResponse.ok().contentType(MediaType.TEXT_EVENT_STREAM)
                 .body(this.examHallService.findQuestionsByExamHallId(id), Question.class);
