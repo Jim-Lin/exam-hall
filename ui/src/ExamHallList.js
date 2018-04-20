@@ -73,13 +73,13 @@ export default class ExamHallList extends React.Component {
         <div className="container">
           <div className="table-responsive">
             <div><ExamHallSearch examHalls={examHalls} onChange={this.handleSearch} /></div>
-            <table className="table table-striped table-hover">
+            <table className="table table-striped table-hover table-sm">
               <thead className="thead-dark">
                 <tr>
-                  <th scope="col" style={thStyle(60)}>考試名稱</th>
-                  <th scope="col" style={thStyle(12.5)}>題數</th>
-                  <th scope="col" style={thStyle(12.5)}>時間</th>
-                  <th scope="col" style={thStyle(15)}></th>
+                  <th scope="col">考試名稱</th>
+                  <th scope="col" style={thStyle(10)}>題數</th>
+                  <th scope="col" style={thStyle(10)}>時間</th>
+                  <th scope="col" style={thStyle(10)}></th>
                 </tr>
               </thead>
               <tbody>
