@@ -102,10 +102,10 @@ export default class Pagination extends React.Component {
         return (
             <ul className="pagination justify-content-end">
                 <li className={pager.currentPage === 1 ? 'page-item disabled' : 'page-item'}>
-                    <a className="page-link" onClick={() => this.setPage(1)}>First</a>
+                    <a className="page-link" onClick={() => this.setPage(1)}>&laquo;</a>
                 </li>
                 <li className={pager.currentPage === 1 ? 'page-item disabled' : 'page-item'}>
-                    <a className="page-link" onClick={() => this.setPage(pager.currentPage - 1)}>Previous</a>
+                    <a className="page-link" onClick={() => this.setPage(pager.currentPage - 1)}>&lsaquo;</a>
                 </li>
                 {pager.pages.map((page, index) =>
                     <li key={index} className={pager.currentPage === page ? 'page-item active' : 'page-item'}>
@@ -113,10 +113,10 @@ export default class Pagination extends React.Component {
                     </li>
                 )}
                 <li className={pager.currentPage === pager.totalPages ? 'page-item disabled' : 'page-item'}>
-                    <a className="page-link" onClick={() => this.setPage(pager.currentPage + 1)}>Next</a>
+                    <a className="page-link" onClick={() => this.setPage(pager.currentPage + 1)}>&rsaquo;</a>
                 </li>
                 <li className={pager.currentPage === pager.totalPages ? 'page-item disabled' : 'page-item'}>
-                    <a className="page-link" onClick={() => this.setPage(pager.totalPages)}>Last</a>
+                    <a className="page-link" onClick={() => this.setPage(pager.totalPages)}>&raquo;</a>
                 </li>
             </ul>
         );
