@@ -1,4 +1,4 @@
-console.log('tag-0.1.1');
+console.log('tag-0.1.2');
 
 import React from 'react';
 import ReactDOM from 'react-dom';
