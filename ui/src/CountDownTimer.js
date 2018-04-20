@@ -13,13 +13,14 @@ export default class CountDownTimer extends React.Component {
     this.setState(prevState => {
       if (prevState.time == 0) {
         clearInterval(this.interval);
+        this.props.onSubmit();
       }
 
       let m = ((prevState.time / 60) >> 0);
       let s = (prevState.time % 60);
 
       return {
-        showTime: `${("000" + m).slice(-3)}:${("00" + s).slice(-2)}`,
+        showTime: `${("00" + m).slice(-3)}:${("0" + s).slice(-2)}`,
         time: prevState.time - 1
       }
     });
