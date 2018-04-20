@@ -6,7 +6,7 @@ function Single(props) {
     question.items.map((item, index) =>
       <div key={index}>
         <label>
-          <input type='radio' name={`radio${question.id}`} value={index} />
+          <input type='radio' name={question.id} value={index} onChange={props.onChange} />
           {'  '}{item.name}
         </label>
       </div>
@@ -23,7 +23,7 @@ export default class Question extends React.Component {
     const question = this.props.value;
     let questionType;
     if (question.type == 0) {
-      questionType = ( <Single question={question} /> );
+      questionType = ( <Single question={question} onChange={this.props.onChange} /> );
     }
 
     return (

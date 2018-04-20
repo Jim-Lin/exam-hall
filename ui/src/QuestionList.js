@@ -33,7 +33,7 @@ export default class QuestionList extends React.Component {
 
     return (
       questions.map(question =>
-        <Question key={question.id} value={question} />
+        <Question key={question.id} value={question} onChange={this.props.onChange} />
       )
     );
   }

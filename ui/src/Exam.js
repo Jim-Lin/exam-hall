@@ -7,14 +7,30 @@ export default class Exam extends React.Component {
     super(props);
     this.state = {
       examHall: this.props.location.state,
-      start: false
+      start: false,
+      data: new Object()
     };
 
     this.handleStart = this.handleStart.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleStart() {
     this.setState({ start: true });
+  }
+
+  handleChange(event) {
+    const target = event.target;
+    const data = this.state.data;
+
+    data[target.name] = target.value;
+    this.setState({ data: data });
+    console.log(this.state.data);
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
   }
 
   render() {
@@ -22,14 +38,20 @@ export default class Exam extends React.Component {
 
     return (
       <div className="container">
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <div className="table-responsive">
-            <table className="table table-striped table-hover">
+            <table className="table table-striped table-hover table-sm">
               <thead className="thead-dark">
                 <tr>
                   <th scope="col">{examHall.name}</th>
-                  <th scope="col">題數: {examHall.number}</th>
-                  <th scope="col">時間: <CountDownTimer time={examHall.time} start={start} /></th>
+                  <th scope="col" style={{ width: '25%' }}>題數:{' '}{examHall.number}</th>
+                  <th scope="col" style={{ width: '25%' }}>時間:{' '}
+                    <CountDownTimer
+                      time={examHall.time}
+                      start={start}
+                      onSubmit={this.handleSubmit}
+                    />
+                  </th>
                 </tr>
               </thead>
             </table>
@@ -38,7 +60,12 @@ export default class Exam extends React.Component {
           <div className="table-responsive">
             <table className="table table-striped table-hover">
               <tbody>
-                <QuestionList value={examHall} onStart={this.handleStart} start={start} />
+                <QuestionList
+                  value={examHall}
+                  onStart={this.handleStart}
+                  start={start}
+                  onChange={this.handleChange}
+                />
               </tbody>
             </table>
           </div>
