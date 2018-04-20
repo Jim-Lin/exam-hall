@@ -19,7 +19,7 @@ export default class ExamHallForm extends React.Component {
         <th scope="row">{name}</th>
         <td>
           <input type="range" min="1" max="100" step="1" name="number"
-            style={{ width: '80px' }}
+            style={{ width: '60px' }}
             value={number}
             id={`faderNumber${id}`}
             onChange={(e) => this.handleChange(e)} />
@@ -28,7 +28,7 @@ export default class ExamHallForm extends React.Component {
         </td>
         <td>
           <input type="range" min="1" max="120" step="1" name="time"
-            style={{ width: '80px' }}
+            style={{ width: '60px' }}
             value={time}
             id={`faderTime${id}`}
             onChange={(e) => this.handleChange(e)} />
@@ -37,7 +37,7 @@ export default class ExamHallForm extends React.Component {
         </td>
         <td>
           <form onSubmit={(e) => this.props.onSubmit(this.state, e)}>
-            <button type="submit" className="btn btn-outline-primary">Start Test</button>
+            <button type="submit" className="btn btn-outline-primary">Start</button>
           </form>
         </td>
       </tr>
