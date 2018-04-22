@@ -30,8 +30,8 @@ export default class CountDownTimer extends React.Component {
   //   this.interval = setInterval(() => this.tick(), 1000);
   // }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.start) {
+  componentDidUpdate(prevProps, prevState) {
+    if (!prevProps.start) {
       this.interval = setInterval(() => this.tick(), 1000);
     }
   }
