@@ -49,7 +49,7 @@ gcloud projects add-iam-policy-binding $PROJECT \
     - run cloudbuild.yaml to build steps
 1. apply Kubernetes configuration files
 
-### cleanup
+## cleanup
 ```
 kubectl delete configmap nginx-config
 kubectl delete --all svc
