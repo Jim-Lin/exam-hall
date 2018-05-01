@@ -1,36 +1,30 @@
 import React from 'react';
-import QuestionList from './QuestionList';
-import CountDownTimer from './CountDownTimer';
+import { connect } from 'react-redux'
+import QuestionList from './containers/QuestionList';
+import CountDownTimer from './containers/CountDownTimer';
 
-export default class Exam extends React.Component {
+class Exam extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       examHall: this.props.location.state,
-      start: false,
       data: new Object()
     };
 
-    this.handleStart = this.handleStart.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
   }
 
-  handleStart() {
-    this.setState({ start: true });
-  }
+  // handleChange(event) {
+  //   const target = event.target;
+  //   const data = this.state.data;
+  //
+  //   data[target.name] = target.value;
+  //   this.setState({ data: data });
+  //   console.log(this.state.data);
+  // }
 
-  handleChange(event) {
-    const target = event.target;
-    const data = this.state.data;
-
-    data[target.name] = target.value;
-    this.setState({ data: data });
-    console.log(this.state.data);
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
+  handleSubmit() {
+    console.log(this.props.answer);
   }
 
   render() {
@@ -48,7 +42,6 @@ export default class Exam extends React.Component {
                   <th scope="col" style={{ width: '25%' }}>時間:{' '}
                     <CountDownTimer
                       time={examHall.time}
-                      start={start}
                       onSubmit={this.handleSubmit}
                     />
                   </th>
@@ -60,19 +53,20 @@ export default class Exam extends React.Component {
           <div className="table-responsive">
             <table className="table table-striped table-hover">
               <tbody>
-                <QuestionList
-                  value={examHall}
-                  onStart={this.handleStart}
-                  start={start}
-                  onChange={this.handleChange}
-                />
+                <QuestionList value={examHall} />
               </tbody>
             </table>
           </div>
 
-          <input type="submit" value="Submit" />
+          <button type="submit">Submit</button>
         </form>
       </div>
     );
   }
 }
+
+const mapStateToProps = state => ({
+  answer: state.answer
+})
+
+export default connect(mapStateToProps)(Exam)
